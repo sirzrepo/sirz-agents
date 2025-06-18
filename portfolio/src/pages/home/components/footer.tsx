@@ -1,6 +1,5 @@
 
 import { MapPin, Phone, Mail } from "lucide-react"
-import Input from "../../../components/common/ui/Input"
 
 export default function Component() {
   return (
