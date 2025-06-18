@@ -4,6 +4,7 @@ import vectorBg from '../../../../public/image 1.svg'
 export default function About() {
   return (
     <div
+    id="about"
     style={{
       backgroundImage: `url(${vectorBg})`,
       backgroundSize: 'contain',
@@ -59,7 +60,7 @@ export default function About() {
 
               <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-white leading-tight">
                 Helping Brands Grow,
-                Connect, And Succeed
+                Connect, and Succeed
               </h1>
 
               <p className="text-gray-300 text-xl font-medium">Automation Architect and RevOps Strategist</p>
@@ -67,8 +68,7 @@ export default function About() {
 
             <div className="space-y-6">
               <p className="text-gray-300 text-xl tracking-wide leading-relaxed">
-                I specialize in building full stack automation systems that align marketing, sales and support
-                operations into a unified data driven engine.
+                I specialize in building full-stack automation systems that align marketing, sales, and support operations into a unified, data-driven engine.
               </p>
 
               <div className="space-y-4 text-lg">

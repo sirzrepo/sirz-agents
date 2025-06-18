@@ -11,8 +11,7 @@ export default function Component() {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-white border-s border-cyan-400 ps-3">My Profile</h3>
             <p className="text-gray-300 text-sm leading-relaxed">
-              Babalemi Samuel is a Sales And Marketing Specialist Helping Businesses Grow Through Smart Strategy And
-              Measurable Results
+            Babalemi Samuel is a Sales and Marketing Specialist helping businesses grow with smart strategy and measurable results.
             </p>
           </div>
 
@@ -41,20 +40,20 @@ export default function Component() {
             <p className="text-gray-300 text-sm leading-relaxed">
               Subscribe for tips and updates on sales and marketing that drive real growth.
             </p>
-            <div className="flex border bg-white rounded-lg h-16">
-              <Input
+            <div className="flex bg-red-500 border h-16">
+              <input
                 type="email"
                 placeholder="Enter Your Email"
-                className="bg-transparent text-black placeholder:text-gray-500 border-0 h-14 flex-1"
+                className="bg-transparent text-black  bg-white placeholder:text-gray-500 border-0 ps-2 flex-1"
               />
-              <button className="bg-gray-700 hover:bg-gray-600 rounded-r-lg text-white px-6">Subscribe</button>
+              <button className="bg-[#141414] hover:bg-gray-600 text-white px-6">Subscribe</button>
             </div>
           </div>
         </div>
 
         {/* Copyright Section */}
         <div className="border-t border-gray-700 pt-6 text-center">
-          <p className="text-gray-400 text-sm">© 2023 Babalemi Samuel</p>
+          <p className="text-gray-400 text-sm">© 2025 Babalemi Samuel</p>
           <p className="text-gray-400 text-sm">All Rights Reserved | Built With Purpose</p>
         </div>
       </div>

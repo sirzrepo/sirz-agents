@@ -24,8 +24,7 @@ export default function Hero() {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">Hi, I'm Babafemi Sanusi</h1>
 
           <p className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-            A Sales, Marketing And AI Automation Specialist Passionate About Driving Results And Building Meaningful
-            Customer Relationships.
+            A Sales, Marketing, and AI Automation Specialist Passionate About Driving Results and Building Meaningful Customer Relationships.
           </p>
 
           {/* Action Buttons */}
