@@ -22,15 +22,15 @@ export default function Component() {
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-gray-300 text-sm">
                 <MapPin className="w-4 h-4 flex-shrink-0" />
-                <span>UK</span>
+                <span>7 Barmouth Road marine parade LL42 1NA</span>
               </div>
               <div className="flex items-center gap-3 text-gray-300 text-sm">
                 <Phone className="w-4 h-4 flex-shrink-0" />
-                <span>+234 810 085 2013</span>
+                <span>07407245685</span>
               </div>
               <div className="flex items-center gap-3 text-gray-300 text-sm">
                 <Mail className="w-4 h-4 flex-shrink-0" />
-                <span>Your email</span>
+                <span>support@sirz.co.uk</span>
               </div>
             </div>
           </div>
