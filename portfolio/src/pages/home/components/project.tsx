@@ -11,7 +11,7 @@ export default function Projects() {
 
   return (
     <div id="works" className="bg-[radial-gradient(circle,_#1b203c_0%,_#141414_90%)] border-b border-slate-700 text-white py-10 md:py-20">
-      <div className="sm:w-[80%] w-[95%] mx-auto">
+      <div className="sm:w-[80%] w-[90%] mx-auto">
         {/* Header */}
         <div className="mb-16">
           <div className="flex items-center space-x-3 mb-5">

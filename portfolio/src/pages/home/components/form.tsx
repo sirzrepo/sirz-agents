@@ -79,7 +79,7 @@ export default function ContactForm() {
 
   return (
     <div id="contact" className="bg-[#141414] text-white py-10 md:py-16">
-      <div className="sm:w-[80%] w-[95%] mx-auto">
+      <div className="sm:w-[80%] w-[90%] mx-auto">
         <div className="mb-16">
           <div className="flex items-center space-x-3 mb-5">
             <div className="w-[1px] h-6 bg-cyan-400"></div>
