@@ -1,0 +1,7 @@
+.tiptap-editor input {
+    border: 1px solid red;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    background-color: red;
+    width: 100%;
+  }
