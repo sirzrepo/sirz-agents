@@ -16,7 +16,7 @@ export const formatDateTime = (date: string) => {
 export const socialLinks = {
     // Facebook: "https://www.facebook.com/share/15JPa4mdat/",
     Instagram: "https://www.instagram.com/femsantech/",
-    Whatsapp: `https://wa.me/2348100652013`,
+    Whatsapp: `https://wa.me/447407245685`,
     Linkedin: "https://www.linkedin.com/in/babafemi-sanusi-26a079320/"
 };
 
