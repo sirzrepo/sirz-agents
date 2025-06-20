@@ -2,11 +2,11 @@ import { ArrowUpRight } from "lucide-react"
 
 export default function Projects() {
   const projects = [
-    { name: "SIRZ.CO.UK", id: "sirz" },
-    { name: "AI AGENTS", id: "ai-agents" },
-    { name: "CRM", id: "crm" },
-    { name: "DIGITAL MARKETING STACK", id: "digital-marketing" },
-    { name: "BRANDCOM.AI", id: "brandcom" },
+    { name: "SIRZ.CO.UK", id: "sirz", href: "https://www.sirz.co.uk/" },
+    { name: "AI AGENTS", id: "ai-agents", href: "https://brandcom.sirz.co.uk/" },
+    { name: "CRM", id: "crm", href: "https://scoring.sirz.co.uk/" },
+    { name: "DIGITAL MARKETING STACK", id: "digital-marketing", href: "https://ai.sirz.co.uk/" },
+    { name: "BRANDCOM.AI", id: "brandcom", href: "https://brandcom.store/" },
   ]
 
   return (
@@ -28,7 +28,9 @@ export default function Projects() {
               key={project.id}
               className=" border-t border-slate-300/50 border-slate-700 hover:bg-slate-800/70 transition-colors cursor-pointer group"
             >
-              <div className="p-6 md:p-8 relative">
+              <div
+              onClick={() => window.open(project.href, '_blank')}
+               className="p-6 md:p-8 relative">
                 <div className="flex justify-between items-start">
                   <h2 className="text-lg md:text-xl font-light text-gray-300 tracking-wide">{project.name}</h2>
                   <ArrowUpRight className="w-10 h-10 text-gray-400 group-hover:text-white transition-colors border rounded-full p-2 flex-shrink-0 ml-4" />

@@ -1,5 +1,6 @@
 
 import { MapPin, Phone, Mail } from "lucide-react"
+import { authorName } from "../../../utils"
 
 export default function Component() {
   return (
@@ -10,7 +11,7 @@ export default function Component() {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-white border-s border-cyan-400 ps-3">My Profile</h3>
             <p className="text-gray-300 text-sm leading-relaxed">
-            Babalemi Samuel is a Sales and Marketing Specialist helping businesses grow with smart strategy and measurable results.
+            {authorName} is a Sales and Marketing Specialist helping businesses grow with smart strategy and measurable results.
             </p>
           </div>
 
@@ -52,7 +53,7 @@ export default function Component() {
 
         {/* Copyright Section */}
         <div className="border-t border-gray-700 pt-6 text-center">
-          <p className="text-gray-400 text-sm">© 2025 Babalemi Samuel</p>
+          <p className="text-gray-400 text-sm">© 2025 {authorName}</p>
           <p className="text-gray-400 text-sm">All Rights Reserved | Built With Purpose</p>
         </div>
       </div>

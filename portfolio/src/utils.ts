@@ -14,12 +14,11 @@ export const formatDateTime = (date: string) => {
 };
 
 export const socialLinks = {
-    Facebook: "https://www.facebook.com/share/15JPa4mdat/",
-    Instagram: "https://www.instagram.com/sirz_official",
-    Whatsapp: ``,
-    TikTok: "",
-    Linkedin: "https://www.linkedin.com/company/sanz-innovation-retro/"
+    // Facebook: "https://www.facebook.com/share/15JPa4mdat/",
+    Instagram: "https://www.instagram.com/femsantech/",
+    Whatsapp: `https://wa.me/2348100652013`,
+    Linkedin: "https://www.linkedin.com/in/babafemi-sanusi-26a079320/"
 };
 
 
-export const calendyLink = `https://calendly.com/sirz-support/1-hour-business-solutions-consult?month=2025-03`
+export const authorName = "Babafemi Sanusi"

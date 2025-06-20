@@ -1,7 +1,8 @@
-import { Linkedin, Facebook, Instagram } from "lucide-react";
+import { Linkedin, Instagram, MessageCircle } from "lucide-react";
 import downArrow from "../../../../public/Frame 1778.svg"
 import star from "../../../../public/octicon_north-star-24.svg"
 import cursorArrow from "../../../../public/mingcute_cursor-3-fill.svg"
+import { authorName, socialLinks } from "../../../utils";
 
 const items = [
     { name: "Sales", href: "#" },
@@ -21,7 +22,7 @@ export default function Hero() {
 
         {/* Hero Text */}
         <div className="text-center sm:w-[80%] mx-auto">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">Hi, I'm Babafemi Sanusi</h1>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">Hi, I'm {authorName}</h1>
 
           <p className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
             A Sales, Marketing, and AI Automation Specialist Passionate About Driving Results and Building Meaningful Customer Relationships.
@@ -32,7 +33,7 @@ export default function Hero() {
             {items.map((item) => (
               <button
                 key={item.name}
-                className="bg-transparent border-2 border-gray-600 text-white hover:bg-gray-800 hover:border-gray-500 rounded-full md:px-12 py-3 text-lg font-light sm:min-w-[140px] min-w-[200px]"
+                className="bg-transparent cursor-default border-2 border-gray-600 text-white hover:bg-gray-800 hover:border-gray-500 rounded-full md:px-12 py-3 text-lg font-light sm:min-w-[140px] min-w-[200px]"
               >
                 {item.name}
               </button>
@@ -61,19 +62,25 @@ export default function Hero() {
       {/* Social Media Icons */}
       <div className="fixed right-6 lg:right-8 top-1/2 transform -translate-y-1/2 flex flex-col space-y-6 z-20">
         <a
-          href="#"
+          href={socialLinks.Linkedin}
           className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors group"
         >
           <Linkedin className="w-6 h-6 text-gray-900 group-hover:text-white" />
         </a>
-        <a
+        {/* <a
           href="#"
           className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors group"
         >
           <Facebook className="w-6 h-6 text-gray-900 group-hover:text-white" />
+        </a> */}
+        <a
+          href={socialLinks.Whatsapp}
+          className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors group"
+        >
+          <MessageCircle className="w-6 h-6 text-gray-900 group-hover:text-white" />
         </a>
         <a
-          href="#"
+          href={socialLinks.Instagram}
           className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors group"
         >
           <Instagram className="w-6 h-6 text-gray-900 group-hover:text-white" />
