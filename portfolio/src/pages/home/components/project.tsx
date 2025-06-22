@@ -3,9 +3,9 @@ import { ArrowUpRight } from "lucide-react"
 export default function Projects() {
   const projects = [
     { name: "SIRZ.CO.UK", id: "sirz", href: "https://www.sirz.co.uk/" },
-    { name: "AI AGENTS", id: "ai-agents", href: "https://brandcom.sirz.co.uk/" },
-    { name: "CRM", id: "crm", href: "https://scoring.sirz.co.uk/" },
-    { name: "DIGITAL MARKETING STACK", id: "digital-marketing", href: "https://lead.sirz.co.uk/" },
+    { name: "AI AGENTS", id: "ai-agents", href: "https://ai-agents.sirz.co.uk/" },
+    { name: "CRM", id: "crm", href: "https://ai-agents.sirz.co.uk/" },
+    { name: "DIGITAL MARKETING STACK", id: "digital-marketing", href: "https://digital-marketing-stacks.sirz.co.uk/" },
     { name: "BRANDCOM.AI", id: "brandcom", href: "https://brandcom.store/" },
   ]
 
