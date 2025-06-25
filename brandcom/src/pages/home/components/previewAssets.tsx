@@ -110,7 +110,6 @@ export default function PreviewAssets({ assets, onBack }: PreviewAssetsProps) {
       
           console.log("Server response:", response.data);
           dispatch(addProjectInactive());
-          setResponseStatus("success");
         } catch (err) {
           console.error(err);
           const errorMessage = err instanceof Error ? err.message : "An unexpected error occurred";
@@ -212,7 +211,6 @@ export default function PreviewAssets({ assets, onBack }: PreviewAssetsProps) {
            {responseStatus && (
              <NotificationModal
                 type={responseStatus as NotificationType}
-                message="Your brand assets have been saved successfully."
                id="notification-preview"
              />
            )}
