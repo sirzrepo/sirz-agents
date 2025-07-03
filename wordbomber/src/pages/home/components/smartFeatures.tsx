@@ -20,7 +20,7 @@ export default function SmartFeatures() {
             reviewer: {
               name: "Matthew Jason",
               position: "Marketing Lead, SaaS Company",
-              img: "https://randomuser.me/api/portraits/men/47.jpg",
+              img: "https://randomuser.me/api/portraits/men/9.jpg",
               quote: "Before Sirz, we were guessing which keywords would work. After using the SEO Agent, we discovered long‑tail searches that brought in 40% more qualified traffic. It felt like reading our customers’ minds."
             }
         },
@@ -53,9 +53,9 @@ export default function SmartFeatures() {
             buttonText: "Prioritize keywords",
             img: FeatureSectionImg3,
             reviewer: {
-              name: "Matthew Jason",
+              name: "Matt Stein",
               position: "Growth Manager, Fintech Startup",
-              img: "https://randomuser.me/api/portraits/men/47.jpg",
+              img: "https://randomuser.me/api/portraits/men/51.jpg",
               quote: "With Sirz, we stopped chasing irrelevant traffic. We now target keywords that match our buyer’s intent, and it has increased demo requests by 25% within the first month"
             }
         },

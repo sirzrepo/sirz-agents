@@ -14,7 +14,7 @@ import featuresectionImg2 from './img/seo-Frame 1618873373.svg'
 import featuresectionImg3 from './img/seo-Table.svg'
 import vectorImg from './img/seo-Vector.svg'
 import vector2Img from './img/seo-Vector (1).svg'
-import personImg from './img/seo-Image.svg'
+import personImg from './img/femi.png'
 import aiIcon from './img/seo-mingcute_ai-fill.svg'
 
 

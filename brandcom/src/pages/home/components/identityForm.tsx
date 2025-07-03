@@ -12,6 +12,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { brandRegistered } from "@/store/brandSlice"
 import Loader from "@/features/loader"
 import { RootState } from "@/store/store"
+import { addProjectInactive } from "@/store/addProjectSlice"
+import { FaArrowLeft } from "react-icons/fa"
 // import FormResponseModal from "../../components/Forms/responseForm"
 
 const industries = [
@@ -142,6 +144,12 @@ export default function IdentityForm() {
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center sm:p-4">
       <div className="w-full lg:w-[80%] bg-white rounded-2xl shadow-sm p-8">
+         <button 
+            onClick={() => dispatch(addProjectInactive())}
+            className="flex items-center text-blue-600 hover:text-blue-800 mb-2"
+          >
+            <FaArrowLeft className="mr-2" /> Back to Assets
+          </button>
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-3">{"Let's Create Your Brand Identity"}</h1>

@@ -4,7 +4,7 @@ import { SirzLogo, DefaultProfileImg } from '../../assets';
 import { useAuth } from '../../context/AuthContext';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
-import { IoHomeOutline, IoChevronForward, IoChevronBack, IoChevronDown, IoChevronUp, IoBookOutline } from 'react-icons/io5';
+import { IoHomeOutline, IoChevronForward, IoChevronBack, IoChevronDown, IoChevronUp } from 'react-icons/io5';
 import { FaSignOutAlt } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -56,11 +56,11 @@ const Sidebar: React.FC<SidebarProps> = ({ onStateChange }) => {
       label: 'Dashboard', 
       path: '/' 
     },
-    { 
-      icon: <IoBookOutline className="text-xl" />, 
-      label: 'Templates', 
-      path: '/templates' 
-    },
+    // { 
+    //   icon: <IoBookOutline className="text-xl" />, 
+    //   label: 'Templates', 
+    //   path: '/templates' 
+    // },
     // {
     //   icon: <IoNewspaperOutline className="text-xl" />, 
     //   label: 'Inquiries', 

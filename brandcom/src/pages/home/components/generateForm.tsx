@@ -92,11 +92,11 @@ export default function BrandAssetsForm() {
   return (
     <div className=" sm:w-[80%] mx-auto pb-6">
       <button 
-              onClick={() => dispatch(addProjectInactive())}
-              className="flex items-center text-blue-600 hover:text-blue-800 mb-2"
-            >
-              <FaArrowLeft className="mr-2" /> Back to Assets
-            </button>
+        onClick={() => dispatch(addProjectInactive())}
+        className="flex items-center text-blue-600 hover:text-blue-800 mb-2"
+      >
+        <FaArrowLeft className="mr-2" /> Back to Assets
+      </button>
       {/* Header */}
       <div className="text-center space-y-4 mb-8">
         <h1 className="text-3xl font-bold text-slate-800">Brand Assets Generator</h1>

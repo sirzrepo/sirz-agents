@@ -17,7 +17,7 @@ export default function ReviewSection() {
       <div className='md:w-[50%] w-[95%]'>
         <p className='text-lg md:text-2xl max-sm:text-center font-semibold'>“The seamless handoff from Sirz to our content team cut down planning time by 50%. We’re publishing quality articles faster — and seeing higher engagement too.”</p>
         <div className=' space-x-4 mt-10 text-xs md:text-base mx-auto'>
-          <p>— Amanda R., Content Director, SaaS SaaS Company</p>
+          <p>— Babafemi Sanusi., CEO, Sanz Innovation Retro</p>
         </div>
       </div>
      </div> 

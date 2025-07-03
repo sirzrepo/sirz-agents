@@ -60,9 +60,8 @@ export default function ContactForm() {
     `;
 
     const payload = {
-      from: formData.email,
-      subject: `New Contact: ${formData.subject}`,
-      text: `New message from ${formData.fullName} (${formData.email})`,
+      subject: `New Portfolio Lead: ${formData.subject}`,
+      text: `New portfolio lead from ${formData.fullName} (${formData.email})`,
       html: messageText,
     };
 
