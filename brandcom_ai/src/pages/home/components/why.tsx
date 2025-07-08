@@ -86,7 +86,7 @@ export default function Why() {
     
             {/* Call to Action Button */}
             <div className="mt-16">
-            <Button className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 px-8 text-lg transition duration-300 ease-in-out shadow-lg">
+            <Button onClick={() => window.open('https://www.brandcom.store/', '_blank')}  className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 px-8 text-lg transition duration-300 ease-in-out shadow-lg">
                 Get started for free
             </Button>
             </div>

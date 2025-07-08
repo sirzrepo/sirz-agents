@@ -21,7 +21,7 @@ export default function Nav() {
     ]
 
     return (
-      <header className="flex items-center justify-between px-6 border-b py-4 sm:w-[80%] w-[95%] mx-auto">
+      <header className="flex items-center justify-between relative z-50 px-6 border-b py-4 sm:w-[80%] w-[95%] mx-auto">
         <div className="flex items-center gap-2">
           <img src={logo} alt="Logo" className="max-sm:w-40" />
         </div>
@@ -86,9 +86,10 @@ export default function Nav() {
                 </a>
               ))}
               <Button 
+              onClick={() => {window.open('https://www.brandcom.store/', '_blank'); setIsMenuOpen(false)}}
                 size="lg" 
                 className="bg-orange-500 hover:bg-orange-600 text-white px-6 mt-4"
-                onClick={() => setIsMenuOpen(false)}
+                // onClick={() => setIsMenuOpen(false)}
               >
                 Contact sales
               </Button>
@@ -96,7 +97,7 @@ export default function Nav() {
           </div>
         </div>
 
-        <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white px-6 md:block hidden">Contact sales</Button>
+        <Button onClick={() => {window.open('https://www.brandcom.store/', '_blank'); setIsMenuOpen(false)}} size="lg" className="bg-orange-500 hover:bg-orange-600 text-white px-6 md:block hidden">Contact sales</Button>
       </header>
     )
 }

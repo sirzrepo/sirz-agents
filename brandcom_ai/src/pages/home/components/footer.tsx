@@ -46,7 +46,7 @@ export default function Component() {
       {/* Call to Action */}
       <div className="flex items-center gap-4">
         <span className="text-gray-700 font-medium">{"Let's do it! —"}</span>
-        <Button className="bg-orange-500 hover:bg-orange-600 text-white px-6">Contact sales</Button>
+        <Button onClick={() => window.open('https://www.brandcom.store/', '_blank')}  className="bg-orange-500 hover:bg-orange-600 text-white px-6">Contact sales</Button>
       </div>
     </div>
 

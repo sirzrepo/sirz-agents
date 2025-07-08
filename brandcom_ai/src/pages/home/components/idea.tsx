@@ -24,10 +24,11 @@ export default function Idea() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <Button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 text-lg font-semibold">
+                    <Button onClick={() => window.open('https://www.brandcom.store/', '_blank')}  className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 text-lg font-semibold">
                     Get started for free
                     </Button>
                     <Button
+                    onClick={() => window.open('https://www.brandcom.store/', '_blank')}
                     variant="outline"
                     className="border-2 border-white text-white hover:bg-white hover:text-green-700 px-8 py-3 text-lg font-semibold bg-transparent"
                     >

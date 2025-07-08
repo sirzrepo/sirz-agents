@@ -4,18 +4,18 @@ import image from '/public/heroBg.svg'
 
 export default function Hero() {
   return (
-    <div className="min-h-screen sm:w-[80%] w-[95%] mx-auto">
+    <div className="min-h-screen sm:w-[80%] mx-auto">
 
       {/* Hero Section */}
       <section className="px-6 py-16 mx-auto text-center">
 
          {/* Background decorative elements */}
-         <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -top-40 -left-40 w-80 h-80 bg-pink-500/20 rounded-full"></div>
-            <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-pink-500/20 rounded-full"></div>
-            <div className="absolute top-1/2 left-1/4 w-60 h-60 bg-pink-400/10 rounded-full"></div>
-            <div className="absolute top-1/4 right-1/3 w-40 h-40 bg-pink-400/10 rounded-full"></div>
-          </div>
+        <div className="absolute z-10 inset-0 overflow-hidden">
+          <div className="absolute z-10 -top-40 -left-40 w-80 h-80 bg-pink-500/20 rounded-full"></div>
+          <div className="absolute z-10 -bottom-40 -right-40 w-80 h-80 bg-pink-500/20 rounded-full"></div>
+          <div className="absolute z-10 top-1/2 left-1/4 w-60 h-60 bg-pink-400/10 rounded-full"></div>
+          <div className="absolute z-10 top-1/4 right-1/3 w-40 h-40 bg-pink-400/10 rounded-full"></div>
+        </div>
         
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight">
           THINK IT. CLICK IT. BUILD IT.
@@ -28,11 +28,11 @@ export default function Hero() {
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-          <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 text-lg">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center z-50 relative items-center mb-16 w-[95%]">
+          <Button onClick={() => window.open('https://www.brandcom.store/', '_blank')} size="lg" className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 text-lg">
             Get started for free
           </Button>
-          <Button size="lg" variant="neutral" className="border-gray-300 text-black px-8 py-3 text-lg bg-transparent">
+          <Button onClick={() => window.open('https://www.brandcom.store/', '_blank')} size="lg" variant="neutral" className="border-gray-300 text-black px-8 py-3 text-lg bg-transparent">
             Request a demo
           </Button>
         </div>
