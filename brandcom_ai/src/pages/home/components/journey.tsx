@@ -53,7 +53,7 @@ export default function Journey() {
 
         <div className="text-center py-20">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">Meet Your Smart Brand Toolkit</h2>
-            <p className="text-2xl text-gray-600 sm:w-[40%] mx-auto">Built-in tools that do the heavy lifting—so you can focus on the big picture.</p>
+            <p className="text-2xl text-gray-600 md:w-[40%] mx-auto">Built-in tools that do the heavy lifting—so you can focus on the big picture.</p>
         </div>
       </section>
     )
