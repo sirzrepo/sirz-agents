@@ -8,6 +8,15 @@ export default function Hero() {
 
       {/* Hero Section */}
       <section className="px-6 py-16 mx-auto text-center">
+
+         {/* Background decorative elements */}
+         <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute -top-40 -left-40 w-80 h-80 bg-pink-500/20 rounded-full"></div>
+            <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-pink-500/20 rounded-full"></div>
+            <div className="absolute top-1/2 left-1/4 w-60 h-60 bg-pink-400/10 rounded-full"></div>
+            <div className="absolute top-1/4 right-1/3 w-40 h-40 bg-pink-400/10 rounded-full"></div>
+          </div>
+        
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight">
           THINK IT. CLICK IT. BUILD IT.
         </h1>

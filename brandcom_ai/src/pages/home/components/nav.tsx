@@ -35,7 +35,7 @@ export default function Nav() {
         </nav>
 
         <button 
-          className="md:hidden p-2 hover:bg-gray-100 rounded-lg"
+          className="md:hidden basis z-50 p-2 hover:bg-gray-100 rounded-lg"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           <svg 
