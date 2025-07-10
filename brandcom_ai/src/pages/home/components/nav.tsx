@@ -58,7 +58,11 @@ export default function Nav() {
             isMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
-          <div className="p-8 border-b shadow-lg bg-white h-full">
+          <div className="p-8 border-b shadow-lg bg-[#FAFAFA] h-full">
+            <div className="flex absolute top-6 left-4 items-center gap-2">
+              <img src={logo} alt="Logo" className="max-sm:w-40" />
+            </div>
+
             <div className="absolute top-8 right-8">
                 <svg
                     className="w-6 h-6 cursor-pointer" 
@@ -75,7 +79,8 @@ export default function Nav() {
                     />
                 </svg>
             </div>
-            <nav className="flex flex-col gap-4 pt-12 justify-center">
+
+            <nav className="flex flex-col gap-4 pt-16 justify-center">
               {navItems.map((item) => (
                 <a 
                   href={item.href} 

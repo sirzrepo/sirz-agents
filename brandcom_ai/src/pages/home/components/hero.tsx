@@ -28,7 +28,7 @@ export default function Hero() {
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center z-50 relative items-center mb-16 w-[95%]">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center z-30 relative items-center mb-16 w-[95%]">
           <Button onClick={() => window.open('https://www.brandcom.store/', '_blank')} size="lg" className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 text-lg">
             Get started for free
           </Button>

@@ -14,5 +14,21 @@
     <script type="module" src="/src/main.tsx"></script>
 
     <!-- <script async id="vectorshift-chat-widget" src="https://app.vectorshift.ai/chatWidget.js" chatbot-id="6800f2264fddf226ca823cd2" chatbot-height="600px" chatbot-width="400px"></script> -->
+    <script>
+      const script = document.createElement("script");
+      script.async = true;
+      script.id = "vectorshift-chat-widget";
+      script.src = "https://app.vectorshift.ai/chatWidget.js";
+    
+      // Set chatbot attributes
+      script.setAttribute("chatbot-id", "683ed9bb55c4c0759597a1ba");
+      script.setAttribute("chatbot-height", "600px");
+    
+      // Set width based on screen size
+      const isSmallScreen = window.innerWidth < 600;
+      script.setAttribute("chatbot-width", isSmallScreen ? "340px" : "400px");
+    
+      document.body.appendChild(script);
+    </script>
   </body>
 </html>
