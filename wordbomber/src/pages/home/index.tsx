@@ -5,12 +5,12 @@ import NavBar from '../../components/layout/nav';
 import SmartFeatures from './components/smartFeatures';
 import { Footer } from '../../components/layout/footer';
 import GrowthEngine from './components/growthEngine';
-import { Agent } from './components/agent';
 import Hero from './components/hero';
 import TopKeywords from './components/topKeywords';
 import ReviewSection from './components/review';
 import VideoSection from './components/videoSection';
 import Contact from './components/contact';
+import AgentWrapper from './components/agent/wrapper';
 
 
 export default function Home() {
@@ -29,7 +29,7 @@ export default function Home() {
                 <TopKeywords />
             </motion.div>
 
-            <Agent />
+            <AgentWrapper />
             <SmartFeatures />
             <ReviewSection />
             <VideoSection />
