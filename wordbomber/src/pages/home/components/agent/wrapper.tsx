@@ -20,17 +20,22 @@ export default function AgentWrapper() {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-blue-50 to-indigo-100 px-4 py-8 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-shift px-4 sm:py-8 py-16 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Floating Orbs */}
-        <div className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full opacity-10 animate-float blur-xl"></div>
-        <div className="absolute top-40 right-32 w-24 h-24 bg-gradient-to-r from-pink-400 to-blue-500 rounded-full opacity-15 animate-float-delayed blur-lg"></div>
-        <div className="absolute bottom-32 left-40 w-40 h-40 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full opacity-8 animate-float-slow blur-2xl"></div>
+        <div className="absolute top-20 left-1 w-32 h-32 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full opacity-10 animate-float blur-xl"></div>
+        <div className="absolute top-40 right-2 w-24 h-24 bg-gradient-to-r from-pink-400 to-blue-500 rounded-full opacity-15 animate-float-delayed blur-lg"></div>
+        <div className="absolute bottom-32 left-2 w-40 h-40 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full opacity-8 animate-float-slow blur-2xl"></div>
+
+
+        <div className="absolute -bottom-0 -right-20 w-32 h-32 bg-white/20 rounded-full animate-pulse"></div>
+          <div className="absolute -bottom-5 -right-16 w-48 h-48 bg-white/20 rounded-full animate-pulse"></div>
+          <div className="absolute -bottom-20 -left-20 w-48 h-48 bg-white/20 rounded-full animate-pulse"></div>
 
         {/* Geometric Shapes */}
-        <div className="absolute top-1/4 right-1/4 w-16 h-16 bg-gradient-to-r from-indigo-400 to-purple-500 opacity-20 rotate-45 animate-spin-slow"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-12 h-12 bg-gradient-to-r from-blue-400 to-cyan-500 opacity-25 animate-pulse"></div>
+        <div className="absolute top-4 right-1/4 w-16 h-16 bg-gradient-to-r from-indigo-400 to-purple-500 opacity-20 rotate-45 animate-spin-slow"></div>
+        <div className="absolute bottom-2 left-1/4 w-12 h-12 bg-gradient-to-r from-blue-400 to-cyan-500 opacity-25 animate-pulse"></div>
 
         {/* Grid Pattern */}
         <div
