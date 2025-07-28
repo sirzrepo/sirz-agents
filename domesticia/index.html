@@ -8,6 +8,87 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <title>Brandcom AI - Branding and Marketing Automation</title>
+    <style>
+      /* Cookie banner styles */
+      .cookie-banner {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        color: #333;
+        padding: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 12px;
+        z-index: 9999;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        font-family: 'Montserrat', sans-serif;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+
+      .cookie-banner.visible {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .cookie-banner h3 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      .cookie-banner p {
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .cookie-banner .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .cookie-banner button, .cookie-banner a {
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+      }
+
+      .cookie-banner .accept {
+        background: #2563eb;
+        color: white;
+      }
+
+      .cookie-banner .reject {
+        background: #e5e7eb;
+        color: #111827;
+      }
+
+      .cookie-banner .settings {
+        background: transparent;
+        color: #2563eb;
+      }
+
+      .cookie-banner .close-btn {
+        position: absolute;
+        top: 8px;
+        right: 12px;
+        background: none;
+        border: none;
+        font-size: 1rem;
+        color: #aaa;
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
@@ -27,6 +108,38 @@
       script.setAttribute("chatbot-width", isSmallScreen ? "340px" : "400px");
     
       document.body.appendChild(script);
+    </script>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner" role="dialog" aria-labelledby="cookie-consent-title">
+      <button class="close-btn" onclick="document.getElementById('cookie-banner').style.display='none';">&times;</button>
+      <h3 id="cookie-consent-title">We use cookies</h3>
+      <p>We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic.
+          By clicking "Accept All", you consent to our use of cookies. 
+          <a class="settings" href="https://privacy.sirz.co.uk/" target="_blank"> - Learn more</a>
+      </p>
+      <div class="actions">
+        <button class="accept" onclick="handleCookieConsent('accepted')">Accept All</button>
+        <button class="reject" onclick="handleCookieConsent('rejected')">Reject All</button>
+      </div>
+    </div>
+
+    <script>
+      // Cookie banner logic
+      function handleCookieConsent(choice) {
+        localStorage.setItem('cookieConsent_brandcom_ai', choice);
+        document.getElementById('cookie-banner').style.display = 'none';
+      }
+
+      window.addEventListener('load', () => {
+        const consent = localStorage.getItem('cookieConsent_brandcom_ai');
+        if (!consent) {
+          setTimeout(() => {
+            const banner = document.getElementById('cookie-banner');
+            banner.classList.add('visible');
+          }, 5000); // Show after 5s
+        }
+      });
     </script>
   </body>
 </html>
