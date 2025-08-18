@@ -8,12 +8,12 @@
   --background-start-rgb: 248, 250, 252;
   --background-end-rgb: 241, 245, 249;
 }
-
+/* 
 .dark {
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 17, 24, 39;
   --background-end-rgb: 11, 15, 25;
-}
+} */
 
 * {
   box-sizing: border-box;
@@ -102,11 +102,11 @@ a {
   }
   
   .card {
-    @apply bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden transition-colors;
+    @apply bg-white rounded-lg shadow-sm overflow-hidden transition-colors;
   }
   
   .input-field {
-    @apply w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E1972F] dark:focus:ring-[#F0B55E] focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100;
+    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E1972F] focus:border-transparent bg-white text-gray-900 ;
   }
 }
 
@@ -140,7 +140,7 @@ a {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
-  .dark {
+  /* .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
@@ -165,7 +165,7 @@ a {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-  }
+  } */
 }
 
 
