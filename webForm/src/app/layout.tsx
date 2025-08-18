@@ -48,19 +48,12 @@ export default function RootLayout({
       <body 
       // className={fontFamily}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
           <ReduxProvider>
               <LayoutContent>
                 {children}
               </LayoutContent>
               <ToastContainer />
           </ReduxProvider>
-        </ThemeProvider>
       </body>
     </html>
   );
