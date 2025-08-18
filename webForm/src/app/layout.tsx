@@ -5,18 +5,8 @@ import { usePathname } from "next/navigation";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { CartProvider } from "@/contexts/CartContext";
-import { UserProvider } from "@/contexts/UserContext";
-import { BranchProvider } from "@/contexts/BranchContext";
 import { ThemeProvider } from "@/providers/ThemeProvider";
-import { AuthProvider } from "@/contexts/AuthContext";
 import { ReduxProvider } from "@/providers/ReduxProvider";
-import NavbarWrapper from "@/components/NavbarWrapper";
-import MobileFooterWrapper from "@/components/layouts/footer/MobileFooterWrapper";
-import { ConvexClientProvider } from "./ConvexClientProvider";
-import { ProtectedRoute } from "@/components/ProtectedRoute";
-import PwaInstallPrompt from "@/services/pwaInstallPrompts";
-import Footer from "@/components/layouts/footer";
 
 // We'll use the built-in Convex authentication system instead of a custom implementation
 
@@ -65,22 +55,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ReduxProvider>
-            <ConvexClientProvider>
-              <AuthProvider>
-                <UserProvider>
-                  <BranchProvider>
-                    <CartProvider>
-                      <ProtectedRoute>
-                        <LayoutContent>
-                          {children}
-                        </LayoutContent>
-                        <ToastContainer />
-                      </ProtectedRoute>
-                    </CartProvider>
-                  </BranchProvider>
-                </UserProvider>
-              </AuthProvider>
-            </ConvexClientProvider>
+              <LayoutContent>
+                {children}
+              </LayoutContent>
+              <ToastContainer />
           </ReduxProvider>
         </ThemeProvider>
       </body>
