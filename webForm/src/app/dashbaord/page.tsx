@@ -14,6 +14,10 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Separator } from "@/components/ui/separator"
 import { Badge } from "@/components/ui/badge"
 import { CheckCircle, Globe, Palette, Settings, PoundSterling, Sparkles, Zap, Rocket } from "lucide-react"
+import { BASE_URL } from "@/lib/utils"
+import axios from "axios"
+import Loader from "@/features/loader"
+
 
 interface FormData {
   // Business & Brand
@@ -48,28 +52,32 @@ interface FormData {
   additionalRequirements: string
 }
 
+const initialFormData: FormData = {
+  businessName: "",
+  industry: "",
+  businessDescription: "",
+  brandStyle: "",
+  hasLogo: "",
+  brandColors: "",
+  websiteType: [],
+  features: [],
+  productCount: "",
+  paymentGateways: [],
+  bookingType: "",
+  calendarIntegration: "",
+  contentProvider: "",
+  needCopywriting: "",
+  maintenancePreference: "",
+  budget: "",
+  timeline: "",
+  launchDate: "",
+  additionalRequirements: "",
+}
+
 export default function ClientQuestionnaire() {
-  const [formData, setFormData] = useState<FormData>({
-    businessName: "",
-    industry: "",
-    businessDescription: "",
-    brandStyle: "",
-    hasLogo: "",
-    brandColors: "",
-    websiteType: [],
-    features: [],
-    productCount: "",
-    paymentGateways: [],
-    bookingType: "",
-    calendarIntegration: "",
-    contentProvider: "",
-    needCopywriting: "",
-    maintenancePreference: "",
-    budget: "",
-    timeline: "",
-    launchDate: "",
-    additionalRequirements: "",
-  })
+  const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [submissionStatus, setSubmissionStatus] = useState<"idle" | "success" | "error">("idle");
+  const [isLoading, setIsLoading] = useState(false)
 
   const [currentSection, setCurrentSection] = useState(0)
 
@@ -97,10 +105,36 @@ export default function ClientQuestionnaire() {
   const showEcommerceFields = formData.websiteType.includes("e-commerce")
   const showBookingFields = formData.websiteType.includes("booking")
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log("Form submitted:", formData)
-    // Handle form submission here
+    try {
+      setIsLoading(true)
+      console.log("Form submitted:", formData)
+
+      const { data } = await axios.post(
+        `${BASE_URL}/api/web-form-questionnaire`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+
+      console.log("Form submitted:", data)
+      setSubmissionStatus("success")
+    } catch (error: any) {
+      console.error("Error submitting form:", error.response?.data || error.message)
+      setSubmissionStatus("error")
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleReset = () => {
+    setFormData(initialFormData)
+    setCurrentSection(0)
+    setSubmissionStatus("idle")
   }
 
   return (
@@ -116,6 +150,25 @@ export default function ClientQuestionnaire() {
           style={{ animationDelay: "4s" }}
         />
       </div>
+
+      {submissionStatus === "success" && (
+        <div className="fixed inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="gradient-border animate-float">
+            <Card className="border-0 shadow-2xl py-8 text-center w-full max-w-md">
+              <CardContent className="space-y-6">
+                <CheckCircle className="w-20 h-20 text-green-500 mx-auto animate-pulse" />
+                <h2 className="text-3xl font-bold text-primary">Submission Successful!</h2>
+                <p className="text-muted-foreground text-lg">
+                  Thank you for your time. We have received your details and will be in touch shortly.
+                </p>
+                <Button onClick={handleReset} className="mt-6 w-full">
+                  Submit Another Response
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      )}
 
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="text-center mb-12 relative">
@@ -159,7 +212,13 @@ export default function ClientQuestionnaire() {
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-8">
+        <div className="space-y-8">
+          {submissionStatus === "error" && (
+            <div className="bg-destructive/10 border border-destructive text-destructive p-4 rounded-lg text-center">
+              <p>There was an error submitting your form. Please try again later.</p>
+            </div>
+          )}
+
           {currentSection === 0 && (
             <div className="gradient-border animate-float">
               <Card className="border-0 shadow-2xl py-8">
@@ -717,15 +776,17 @@ export default function ClientQuestionnaire() {
                 Next
               </Button>
             ) : (
-              <Button
-                type="submit"
-                className="h-12 px-8 bg-primary hover:from-accent hover:to-primary transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary/30 animate-glow"
-              >
-                Submit Questionnaire
-              </Button>
+              <form onSubmit={handleSubmit}>
+                <Button
+                  type="submit"
+                  className="h-12 px-8 bg-primary hover:from-accent hover:to-primary transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary/30 animate-glow w-full"
+                >
+                  Submit Questionnaire
+                </Button>
+              </form>
             )}
           </div>
-        </form>
+        </div>
 
         {(formData.websiteType.length > 0 || formData.features.length > 0) && (
           <div className="mt-12 glass-effect rounded-2xl p-6 shadow-2xl">
@@ -775,6 +836,11 @@ export default function ClientQuestionnaire() {
             </Card>
           </div>
         )}
+        {isLoading && 
+        <div className="fixed inset-0 bg-white bg-opacity-50 flex items-center justify-center z-50">
+          loading...
+        </div>
+        }
       </div>
     </div>
   )
