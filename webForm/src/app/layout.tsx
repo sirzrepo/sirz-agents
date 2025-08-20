@@ -36,14 +36,14 @@ export default function RootLayout({
       <head>
       <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#E1972F" />
-        <link rel="apple-touch-icon" href="/logo-v2.svg.webp" />
+        <link rel="apple-touch-icon" href="/logo.svg" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title> Sirz Client Questionnaire</title>
-        <link rel="icon" type="image/png" href="/logo-v2.svg.webp" />
+        <link rel="icon" type="image/png" href="/logo.svg" />
       </head>
       <body 
       // className={fontFamily}
