@@ -1,0 +1,22 @@
+{
+    "name": "Rekobo V1.0",
+    "short_name": "Rekobo",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#088b56",
+    "theme_color": "#088b56",
+    "orientation": "portrait",
+    "icons": [
+      {
+        "src": "/images/logo_.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/images/logo_.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+  
