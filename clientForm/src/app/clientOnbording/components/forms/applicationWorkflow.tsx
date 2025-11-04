@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState, useCallback, useEffect } from "react"
+import { useLocation } from 'react-router-dom';
 import { IdentityAndBackground } from "../questions/sectionOne/identityBackground"
 // Removed dummy data import - using local storage instead
 import { PreviewSubmit } from "../questions/reviewSubmit"
@@ -169,12 +170,19 @@ gettingStarted: 0,
 
 export default function ApplicationWorkflow() {
 // TODO: Replace this with actual user authentication logic
-const [userId, setUserId] = useState<string>("68615a01da004964b2905b2d")
+const [userId, setUserId] = useState<string | null>(null);
 const [selectedSection, setSelectedSection] = useState<string>("identity")
 const [completionStatus, setCompletionStatus] = useState(initialCompletionStatus)
 const [progressStatus, setProgressStatus] = useState(initialProgressStatus)
 const [allSectionData, setAllSectionData] = useState<Record<string, Record<string, string>>>({})
 const [updateProgressStatus, setUpdateProgressStatus] = useState(false)
+
+useEffect(() => {
+  if (typeof window !== "undefined") {
+    const params = new URLSearchParams(window.location.search);
+    setUserId(params.get("userId"));
+  }
+}, []);
 
 // Log progress status changes
 useEffect(() => {
@@ -342,7 +350,7 @@ const updateSectionProgress = useCallback(
     console.log("Updated progress status:", updatedProgressStatus, "Answered count:", answeredCount);
     
     setProgressStatus(updatedProgressStatus);
-    console.log("*************************", progressStatus)
+    // console.log("*************************", progressStatus)
     
     // Update backend
     try {
