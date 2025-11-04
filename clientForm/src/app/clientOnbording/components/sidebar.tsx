@@ -146,7 +146,7 @@ export default function Sidebar({
     <div className="w-76 h-screen bg-white border-r border-gray-200 p-6 overflow-y-auto flex-shrink-0">
       <div className="mb-8 bg-blue-50 rounded-lg p-4 border border-blue-200">
         <p className="text-xs font-semibold text-blue-600 mb-1">OVERALL PROGRESS</p>
-        <p className="text-2xl font-bold text-blue-900">{overallProgress}%</p>
+        {/* <p className="text-2xl font-bold text-blue-900">{overallProgress}%</p> */}
         <div className="mt-2 w-full bg-blue-200 rounded-full h-2">
           <div
             className="bg-blue-600 h-2 rounded-full transition-all duration-300"

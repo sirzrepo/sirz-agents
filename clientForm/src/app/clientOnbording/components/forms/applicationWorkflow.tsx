@@ -508,7 +508,7 @@ overallProgress={overallProgress}
 
 <div className="flex-1 p-8 overflow-y-auto">
 <div className="max-w-3xl mx-auto">
-<div className="mb-8 bg-white bg-opacity-10 rounded-lg p-4 mb-6">
+{/* <div className="mb-8 bg-white bg-opacity-10 rounded-lg p-4 mb-6">
 <div className="flex items-center justify-between">
 <div>
 <p className="text-gray-200 text-sm">Overall Application Progress</p>
@@ -546,7 +546,7 @@ fontSize="20"
 </svg>
 </div>
 </div>
-</div>
+</div> */}
 
 {/* Header */}
 <div className="mb-8">
