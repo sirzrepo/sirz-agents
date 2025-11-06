@@ -105,9 +105,9 @@ export function AboutStore({
       {/* Agency Work */}
       <div className="mb-6">
         <label className="block text-sm font-semibold text-gray-900 mb-2">Do you sell mostly locally, internationally, or both?</label>
-        <div className="mt-2 space-x-6 flex px-6">
+        <div className="mt-2 flex flex-col px-6">
           {locationOptions.map(option => (
-            <label key={option.value} className="inline-flex items-center">
+            <label key={option.value} className=" items-center">
               <input
                 type="radio"
                 name="sellLocation"

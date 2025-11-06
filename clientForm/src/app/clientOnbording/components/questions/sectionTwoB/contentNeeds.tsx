@@ -68,7 +68,7 @@ export function ContentNeeds({
 
       <div className="">
         <label className="block text-sm font-semibold text-gray-900 mb-2">Do you have any pictures, videos, or brand assets ready for content creation?</label>
-        <div className="mt-2 space-x-6 flex px-6">
+        <div className="mt-2 flex flex-col px-6">
           {booleanOptions.map(option => (
             <label key={option.value} className="inline-flex items-center">
               <input
@@ -108,7 +108,7 @@ export function ContentNeeds({
       {/* Education Background */}
       <div className="">
         <label className="block text-sm font-semibold text-gray-900 mb-2">Do you have a preferred style or tone for your brand?</label>
-        <div className="mt-2 space-x-6 flex px-6">
+        <div className="mt-2 flex flex-col px-6">
           {booleanOptions.map(option => (
             <label key={option.value} className="inline-flex items-center">
               <input

@@ -89,7 +89,7 @@ export function Challenges({
       {/* Track Results */}
       <div className="">
         <label className="block text-sm font-semibold text-gray-900 mb-2">Do you track marketing results? If yes, which numbers matter most to you?</label>
-        <div className="mt-2 space-x-6 flex px-6">
+        <div className="mt-2 flex flex-col px-6">
           {booleanOptions.map(option => (
             <label key={option.value} className="inline-flex items-center">
               <input

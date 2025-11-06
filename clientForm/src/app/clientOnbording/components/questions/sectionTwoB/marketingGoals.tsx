@@ -95,7 +95,7 @@ export function MarketingGoals({
       {/* Education Background */}
       <div className="">
         <label className="block text-sm font-semibold text-gray-900 mb-2">Have you run ads or marketing campaigns before? If yes, what worked and what didn’t?</label>
-        <div className="mt-2 space-x-6 flex px-6">
+        <div className="mt-2 flex flex-col px-6">
           {booleanOptions.map(option => (
             <label key={option.value} className="inline-flex items-center">
               <input
@@ -128,7 +128,7 @@ export function MarketingGoals({
       {/* Agency Work */}
       <div className="mb-6">
         <label className="block text-sm font-semibold text-gray-900 mb-2">Are you focusing more on short-term sales or long-term growth?</label>
-        <div className="mt-2 space-x-6 flex px-6">
+        <div className="mt-2 flex flex-col px-6">
           {focusOptions.map(option => (
             <label key={option.value} className="inline-flex items-center">
               <input

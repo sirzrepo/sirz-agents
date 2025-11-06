@@ -47,7 +47,7 @@ export function PreviewSubmit({ allSectionData, completionStatus, sectionConfigs
       {/* Completion Status */}
       <div className="bg-white rounded-lg p-6 border border-gray-200">
         <h2 className="text-lg font-bold text-gray-900 mb-4">Application Summary</h2>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {Object.entries(sectionConfigs).map(([sectionId, config]) => (
             <div key={sectionId} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
               <div

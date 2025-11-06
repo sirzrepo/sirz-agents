@@ -61,9 +61,9 @@ export function GettingStarted({
         {/* Areas Help */}
         <div className="mb-6">
         <label className="block text-sm font-semibold text-gray-900 mb-2">When do you want to start using SIRZ for your marketing?</label>
-        <div className="flex flex-col px-6">
+        <div className="mt-2 flex flex-col px-6">
           {whenStartOptions.map(option => (
-            <label key={option.value} className="flex items-center">
+            <label key={option.value} className="inline-flex items-center">
               <input
                 type="radio"
                 name="whenStart"
@@ -72,7 +72,7 @@ export function GettingStarted({
                 onChange={handleChange}
                 className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
               />
-              {option.label}
+              <span className="ml-2 text-gray-700">{option.label}</span>
             </label>
           ))}
         </div>
@@ -82,7 +82,7 @@ export function GettingStarted({
       {/* Track Results */}
       <div className="">
         <label className="block text-sm font-semibold text-gray-900 mb-2">Are you ready to launch campaigns once your content is ready?</label>
-        <div className="mt-2 space-x-6 flex px-6">
+        <div className="mt-2 flex flex-col px-6">
           {booleanOptions.map(option => (
             <label key={option.value} className="inline-flex items-center">
               <input
@@ -101,7 +101,7 @@ export function GettingStarted({
 
       <div className="">
         <label className="block text-sm font-semibold text-gray-900 mb-2">Do you want ongoing support or just a one-time setup?</label>
-        <div className="mt-2 space-x-6 flex px-6">
+        <div className="mt-2 flex flex-col px-6">
           {supportTypeOptions.map(option => (
             <label key={option.value} className="inline-flex items-center">
               <input

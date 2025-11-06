@@ -93,7 +93,7 @@ const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     {/* Product Validation */}
     <div className="mb-6">
       <label className="block text-sm font-semibold text-gray-900 mb-2">Have you ever sold products online before? If yes, on which platforms?</label>
-      <div className="mt-2 space-x-6 flex px-6">
+      <div className="mt-2 flex flex-col px-6">
         {booleanOptions.map(option => (
           <label key={option.value} className="inline-flex items-center">
             <input
@@ -126,7 +126,7 @@ const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
               onChange={handleRadioChange}
               className="mr-2"
             />
-            {option.label}
+            <span className="ml-2 text-gray-700">{option.label}</span>
           </label>
         ))}
       </div>
@@ -155,7 +155,7 @@ const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     {/* Success Metrics */}
     <div className="mb-6">
       <label className="block text-sm font-semibold text-gray-900 mb-2">Have you ever worked with a consultant or agency to grow your online sales?</label>
-      <div className="mt-2 space-x-6 flex px-6">
+      <div className="mt-2 flex flex-col px-6">
         {booleanOptions.map(option => (
           <label key={option.value} className="inline-flex items-center">
             <input

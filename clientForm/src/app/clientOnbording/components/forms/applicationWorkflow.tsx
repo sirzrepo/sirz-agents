@@ -25,6 +25,7 @@ import { Challenges } from "../questions/sectionTwoB/challenges"
 import { GettingStarted } from "../questions/sectionTwoB/gettingStarted"
 import { useSelector } from "react-redux"
 import { RootState } from "@/store/store"
+import { ChevronLeft } from "lucide-react";
 
 interface SectionConfig {
 title: string
@@ -175,7 +176,7 @@ const [selectedSection, setSelectedSection] = useState<string>("identity")
 const [completionStatus, setCompletionStatus] = useState(initialCompletionStatus)
 const [progressStatus, setProgressStatus] = useState(initialProgressStatus)
 const [allSectionData, setAllSectionData] = useState<Record<string, Record<string, string>>>({})
-const [updateProgressStatus, setUpdateProgressStatus] = useState(false)
+const [showSidebarOnMobile, setShowSidebarOnMobile] = useState(false)
 
 useEffect(() => {
   if (typeof window !== "undefined") {
@@ -270,13 +271,6 @@ localStorage.setItem(`progressStatus_${userId}`, JSON.stringify(progressStatus))
 }
 }, [progressStatus, isLoaded, userId])
 
-// Save selected section to local storage
-// useEffect(() => {
-// if (isLoaded && typeof window !== "undefined" && userId) {
-// localStorage.setItem(`selectedSection_${userId}`, selectedSection)
-// }
-// }, [selectedSection, isLoaded, userId])
-
 useEffect(() => {
 if (!userId || !isLoaded) return;
 const updateSelectedSection = async () => {
@@ -291,35 +285,6 @@ console.error("⚠️ Failed to update selected section", error?.response?.data 
 };
 updateSelectedSection();
 }, [selectedSection, userId, isLoaded]);
-
-// useEffect(() => {
-// const sendApplicationData = async () => {
-// // Run only when user and data are ready
-// // if (!isLoaded || typeof window === "undefined" || !userId) return;
-
-// try {
-// const payload = {
-// userId,
-// applicationFormData: allSectionData ?? {},
-// completionStatus: completionStatus ?? {},
-// progressStatus: progressStatus ?? {},
-// selectedSection: selectedSection ?? "",
-// isComplete: false,
-// };
-
-// const response = await axios.post(`${BASE_URL}/api/onboarding`, payload);
-
-// console.log("✅ Application form data sent successfully:", response.data);
-// return response.data;
-// } catch (error: any) {
-// console.error("❌ Error sending data to backend:", error?.response?.data || error.message);
-// }
-// };
-
-// sendApplicationData();
-// }, [allSectionData, completionStatus, progressStatus, selectedSection, isLoaded, userId]);
-
-console.log("allSectionData", allSectionData)
 
 const calculateOverallProgress = () => {
 const totalQuestions = Object.values(sectionConfigs).reduce((sum, config) => sum + config.totalQuestions, 0)
@@ -337,6 +302,19 @@ setCompletionStatus((prev) => ({
 ...prev,
 [sectionId]: true,
 }))
+}
+
+const handleSelectSection = (sectionId: string) => {
+  setSelectedSection(sectionId)
+  if (window.innerWidth < 768) {
+    setShowSidebarOnMobile(false)
+  }
+}
+
+const handleBackClick = () => {
+  if (window.innerWidth < 768) {
+    setShowSidebarOnMobile(true)
+  }
 }
 
 const updateSectionProgress = useCallback(
@@ -414,25 +392,32 @@ const saveSectionData = async (sectionId: string, data: Record<string, string>, 
     ...prev,
     [sectionId]: answeredCount,
   }));
+
+  setShowSidebarOnMobile(true)
   
   try {
+    const payload = {
+      data: data && Object.keys(data).length > 0 ? data : {}, // fallback
+      isComplete: true,
+      progress: updatedProgressStatus[sectionId] ?? 0, // use latest
+    };
     // Update the section with all necessary data
     const response = await axios.put(
       `${BASE_URL}/api/onboarding/${userId}/section/${sectionId}`,
-      {
-        data: data,
-        isComplete: true,
-        progress: progressStatus[sectionId]
-      }
+      payload
     );
     
     console.log(`✅ Section "${sectionId}" updated:`, response.data);
+    // setShowSidebarOnMobile(true)
     
     // Update the selected section
     await axios.put(
       `${BASE_URL}/api/onboarding/${userId}/selected-section`,
-      { sectionName: sectionId }
+      { 
+        sectionName: sectionId,
+       }
     );
+
     
   } catch (error: any) {
     console.error(
@@ -443,45 +428,70 @@ const saveSectionData = async (sectionId: string, data: Record<string, string>, 
 };
 
 
-const handleSubmit = () => {
-console.log("Submitting application with data:", allSectionData)
-// Here you can send the data to your backend
-alert("Application submitted successfully!")
-}
+  const handleSubmit = () => {
+    console.log("Submitting application with data:", allSectionData)
+    // Here you can send the data to your backend
+    alert("Application submitted successfully!")
+  }
 
 const overallProgress = calculateOverallProgress()
 
-if (selectedSection === "preview") {
-return (
-<div className="flex h-screen bg-blue-900">
-<Sidebar
-selectedSection={selectedSection}
-onSelectSection={setSelectedSection}
-completionStatus={completionStatus}
-isStageOneComplete={isStageOneComplete()}
-progressStatus={progressStatus}
-sectionConfigs={sectionConfigs}
-overallProgress={overallProgress}
-/>
+  if (selectedSection === "preview") {
+    return (
+      <div className="flex h-screen bg-blue-900">
+        <div className="hidden md:block">
+          <Sidebar
+            selectedSection={selectedSection}
+            onSelectSection={handleSelectSection}
+            completionStatus={completionStatus}
+            isStageOneComplete={isStageOneComplete()}
+            progressStatus={progressStatus}
+            sectionConfigs={sectionConfigs}
+            overallProgress={overallProgress}
+          />
+        </div>
 
-<div className="flex-1 p-8 overflow-y-auto">
-<div className="max-w-3xl mx-auto">
-<div className="mb-8">
-<h1 className="text-3xl font-bold text-white mb-2">Review & Submit</h1>
-<p className="text-gray-200">Please review your information before submitting your application</p>
-</div>
+        {showSidebarOnMobile && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+            onClick={() => setShowSidebarOnMobile(false)}
+          />
+        )}
 
-<PreviewSubmit
-allSectionData={allSectionData}
-completionStatus={completionStatus}
-sectionConfigs={sectionConfigs}
-onSubmit={handleSubmit}
-/>
-</div>
-</div>
-</div>
-)
-}
+        <div
+          className={`fixed left-0 top-0 h-screen z-50 md:hidden transform transition-transform duration-300 ${
+            showSidebarOnMobile ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
+          <Sidebar
+            selectedSection={selectedSection}
+            onSelectSection={handleSelectSection}
+            completionStatus={completionStatus}
+            isStageOneComplete={isStageOneComplete()}
+            progressStatus={progressStatus}
+            sectionConfigs={sectionConfigs}
+            overallProgress={overallProgress}
+          />
+        </div>
+
+      <div className="flex-1 p-8 overflow-y-auto">
+      <div className="max-w-3xl mx-auto">
+      <div className="mb-8">
+      <h1 className="text-3xl font-bold text-white mb-2">Review & Submit</h1>
+      <p className="text-gray-200">Please review your information before submitting your application</p>
+      </div>
+
+      <PreviewSubmit
+      allSectionData={allSectionData}
+      completionStatus={completionStatus}
+      sectionConfigs={sectionConfigs}
+      onSubmit={handleSubmit}
+      />
+      </div>
+      </div>
+      </div>
+    )
+  }
 
 const config = sectionConfigs[selectedSection]
 
@@ -496,74 +506,75 @@ const ContentComponent = config.component
 
 return (
 <div className="flex h-screen bg-blue-900">
-<Sidebar
-selectedSection={selectedSection}
-onSelectSection={setSelectedSection}
-completionStatus={completionStatus}
-isStageOneComplete={isStageOneComplete()}
-progressStatus={progressStatus}
-sectionConfigs={sectionConfigs}
-overallProgress={overallProgress}
-/>
+  <div className="hidden md:block">
+    <Sidebar
+      selectedSection={selectedSection}
+      onSelectSection={handleSelectSection}
+      completionStatus={completionStatus}
+      isStageOneComplete={isStageOneComplete()}
+      progressStatus={progressStatus}
+      sectionConfigs={sectionConfigs}
+      overallProgress={overallProgress}
+    />
+  </div>
 
-<div className="flex-1 p-8 overflow-y-auto">
-<div className="max-w-3xl mx-auto">
-{/* <div className="mb-8 bg-white bg-opacity-10 rounded-lg p-4 mb-6">
-<div className="flex items-center justify-between">
-<div>
-<p className="text-gray-200 text-sm">Overall Application Progress</p>
-<p className="text-white text-2xl font-bold">{overallProgress}%</p>
-</div>
-<div className="w-24 h-24">
-<svg viewBox="0 0 100 100" className="w-full h-full">
-<circle cx="50" cy="50" r="45" fill="none" stroke="#e5e7eb" strokeWidth="3" />
-<circle
-cx="50"
-cy="50"
-r="45"
-fill="none"
-stroke="#10b981"
-strokeWidth="3"
-strokeDasharray={`${2 * Math.PI * 45}`}
-strokeDashoffset={`${2 * Math.PI * 45 * (1 - overallProgress / 100)}`}
-strokeLinecap="round"
-style={{
-transition: "stroke-dashoffset 0.3s ease",
-transform: "rotate(-90deg)",
-transformOrigin: "50% 50%",
-}}
-/>
-<text
-x="50"
-y="50"
-textAnchor="middle"
-dy="0.3em"
-className="text-lg font-bold fill-white"
-fontSize="20"
->
-{overallProgress}%
-</text>
-</svg>
-</div>
-</div>
-</div> */}
+      {showSidebarOnMobile && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+          onClick={() => setShowSidebarOnMobile(false)}
+        />
+      )}
 
-{/* Header */}
-<div className="mb-8">
-<h1 className="text-3xl font-bold text-white mb-2">{config.title}</h1>
-<p className="text-gray-200">{config.description}</p>
-</div>
+      <div
+        className={`fixed left-0 top-0 h-screen z-50 md:hidden transform transition-transform duration-300 ${
+          showSidebarOnMobile ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <Sidebar
+          selectedSection={selectedSection}
+          onSelectSection={handleSelectSection}
+          completionStatus={completionStatus}
+          isStageOneComplete={isStageOneComplete()}
+          progressStatus={progressStatus}
+          sectionConfigs={sectionConfigs}
+          overallProgress={overallProgress}
+        />
+      </div>
 
-<ContentComponent
-initialData={allSectionData[selectedSection]}
-onComplete={() => markSectionComplete(selectedSection)}
-// onComplete={() => {}}
-onProgressUpdate={(answeredCount: number) => updateSectionProgress(selectedSection, answeredCount)}
-// onProgressUpdate={() => {}}
-onSaveData={(data: Record<string, string>, answeredCount: number) => saveSectionData(selectedSection, data, answeredCount)}
-/>
-</div>
-</div>
+    <div className="flex-1 p-8 overflow-y-auto">
+      <div className="max-w-3xl mx-auto">
+      <div className="md:hidden mb-4 flex items-center justify-between">
+          <button
+            onClick={handleBackClick}
+            className="flex items-center gap-2 text-white hover:text-gray-200 transition-colors"
+          >
+            <ChevronLeft className="w-6 h-6" />
+            <span>Back</span>
+          </button>
+          <button
+            onClick={() => setShowSidebarOnMobile(true)}
+            className="text-white hover:text-gray-200 transition-colors text-sm font-medium"
+          >
+            Menu
+          </button>
+        </div>
+
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-white mb-2">{config.title}</h1>
+          <p className="text-gray-200">{config.description}</p>
+        </div>
+
+        <ContentComponent
+          initialData={allSectionData[selectedSection]}
+          onComplete={() => markSectionComplete(selectedSection)}
+          // onComplete={() => {}}
+          onProgressUpdate={(answeredCount: number) => updateSectionProgress(selectedSection, answeredCount)}
+          // onProgressUpdate={() => {}}
+          onSaveData={(data: Record<string, string>, answeredCount: number) => saveSectionData(selectedSection, data, answeredCount)}
+        />
+      </div>
+    </div>
 </div>
 )
 }

@@ -92,7 +92,7 @@ export function ReadinessExpectations({
     {/* Looking for Ongoing Support */}
     <div className="mb-6">
       <label className="block text-sm font-semibold text-gray-900 mb-2">Are you looking for a one-time setup or ongoing support to grow your business?</label>
-      <div className="mt-2 space-x-6 flex px-6">
+      <div className="mt-2 flex flex-col px-6">
         {partnershipOptions.map(option => (
           <label key={option.value} className="inline-flex items-center">
             <input
