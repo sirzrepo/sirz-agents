@@ -66,7 +66,7 @@ export function MarketingGoals({
           name="nearFutureGoal"
           value={formData.nearFutureGoal}
           onChange={handleChange}
-          placeholder="Describe your experience with relevant brands or organizations"
+          placeholder=""
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           rows={4}
         />
@@ -117,7 +117,7 @@ export function MarketingGoals({
               name="adsExperience"
               value={formData.adsExperience}
               onChange={handleChange}
-              placeholder="List your educational qualifications and institutions"
+              placeholder=""
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               rows={4}
             />

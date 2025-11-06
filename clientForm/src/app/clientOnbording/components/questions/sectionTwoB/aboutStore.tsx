@@ -63,7 +63,7 @@ export function AboutStore({
           name="storeName"
           value={formData.storeName}
           onChange={handleChange}
-          placeholder="Describe your experience with relevant brands or organizations"
+          placeholder="Helps us understand your store"
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           rows={4}
         />
@@ -89,14 +89,14 @@ export function AboutStore({
         </div>
       </div>
 
-      {/* Education Background */}
+
       <div className="">
         <label className="block text-sm font-semibold text-gray-900 mb-2">How long have you been selling online?</label>
         <textarea
           name="onlineStoreExperience"
           value={formData.onlineStoreExperience}
           onChange={handleChange}
-          placeholder="List your educational qualifications and institutions"
+          placeholder=" tell us about your online experience"
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           rows={4}
         />
