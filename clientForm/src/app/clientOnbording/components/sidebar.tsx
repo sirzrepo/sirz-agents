@@ -218,20 +218,20 @@ export default function Sidebar({
         </div>
       </div>
 
-      {!allSectionsComplete && (
+      {/* {allSectionsComplete && ( */}
         <div className="border-t border-gray-200 pt-6">
           <button
             onClick={() => onSelectSection("preview")}
             className={`w-full px-4 py-3 rounded-lg font-semibold transition-colors ${
               selectedSection === "preview"
                 ? "bg-green-600 text-white"
-                : "bg-green-100 text-green-700 hover:bg-green-200"
+                : !allSectionsComplete ? "bg-yellow-100 text-yellow-700 hover:bg-yellow-200" : "bg-green-100 text-green-700 hover:bg-green-200"
             }`}
           >
             Review & Submit
           </button>
         </div>
-      )}
+      {/* // )} */}
     </div>
   )
 }
