@@ -218,7 +218,7 @@ export default function Sidebar({
         </div>
       </div>
 
-      {allSectionsComplete && (
+      {!allSectionsComplete && (
         <div className="border-t border-gray-200 pt-6">
           <button
             onClick={() => onSelectSection("preview")}

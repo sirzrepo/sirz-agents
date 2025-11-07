@@ -1,5 +1,7 @@
 "use client"
 
+import { BASE_URL } from "@/lib/utils"
+import axios from "axios"
 import { CheckCircle, AlertCircle } from "lucide-react"
 import { useState } from "react"
 
@@ -8,13 +10,40 @@ interface PreviewSubmitProps {
   completionStatus: Record<string, boolean>
   sectionConfigs: Record<string, any>
   onSubmit: () => void
+  formData: any
+  userId: string | null
 }
 
-export function PreviewSubmit({ allSectionData, completionStatus, sectionConfigs, onSubmit }: PreviewSubmitProps) {
+export function PreviewSubmit({ allSectionData, completionStatus, sectionConfigs, onSubmit, formData, userId }: PreviewSubmitProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
 
-  const allSectionsComplete = Object.values(completionStatus).every((status) => status)
+  // Get the relevant sections based on whether the user has a store
+  const hasStore = formData.ecommerceExperience?.haveStore === 'yes';
+  
+  // Define required sections for each path
+  const requiredSections = [
+    'identity',
+    'goalsIntent',
+    'ecommerceExperience',
+    'challengesSupport',
+    'readinessExpectations',
+    ...(hasStore 
+      ? ['aboutStore', 'marketingGoals', 'contentNeeds', 'challengesAndSupport', 'gettingStarted']
+      : ['validation', 'setupPrefrences', 'strategy', 'timeline']
+    )
+  ];
+
+  // Check if all required sections are complete
+  const allSectionsComplete = requiredSections.every(section => {
+    const sectionData = allSectionData[section];
+    if (!sectionData || typeof sectionData !== 'object') return false;
+    
+    // Check if all fields in the section have values
+    return Object.values(sectionData).every(value => 
+      value !== undefined && value !== null && value !== ''
+    );
+  });
 
   const handleSubmit = async () => {
     if (!allSectionsComplete) return
@@ -22,9 +51,21 @@ export function PreviewSubmit({ allSectionData, completionStatus, sectionConfigs
     setIsSubmitting(true)
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500))
-    setSubmitSuccess(true)
-    setIsSubmitting(false)
-    onSubmit()
+    try {
+      const response = await axios.put(`${BASE_URL}/api/onboarding/user/onboarding-status`, {
+        userId,
+        onboardingStatus: "completed"
+      });
+      setSubmitSuccess(true)
+      console.log("✅ Application form submitted:", response.data);
+      setTimeout(() => {
+        window.location.href = "https://client.sirz.co.uk/";
+      }, 2000);
+    } catch (error) {
+      setIsSubmitting(false)
+      console.log("❌ Application form submission failed:", error);
+    }
+    // onSubmit()
   }
 
   if (submitSuccess) {
