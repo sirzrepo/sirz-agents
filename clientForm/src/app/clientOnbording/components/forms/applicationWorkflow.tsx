@@ -207,15 +207,17 @@ export default function ApplicationWorkflow() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
-      setUserId(params.get("userId"));
+      const urlUserId = params.get("userId");
+      setUserId(urlUserId);
+      
+      // Only redirect if there's no userId in the URL after checking
+      if (!urlUserId) {
+        console.log('No userId found in URL, redirecting...');
+        window.location.href = "https://client.sirz.co.uk/";
+      }
     }
   }, []);
 
-  useEffect(() => {
-    if (!userId) {
-      window.location.href = 'https://client.sirz.co.uk/'
-    }
-  }, [userId])
 
   // Log progress status changes
   useEffect(() => {
