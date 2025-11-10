@@ -26,6 +26,7 @@ import { GettingStarted } from "../questions/sectionTwoB/gettingStarted"
 import { useSelector } from "react-redux"
 import { RootState } from "@/store/store"
 import { ChevronLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
 
   interface SectionConfig {
     title: string
@@ -195,6 +196,7 @@ export default function ApplicationWorkflow() {
   const [allSectionData, setAllSectionData] = useState<Record<string, Record<string, string>>>({})
   const [showSidebarOnMobile, setShowSidebarOnMobile] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
+  const router = useRouter()
 
   // Combine base configs with the appropriate stage two configs based on isHaveStore
   const sectionConfigs: Record<string, SectionConfig> = {
@@ -208,6 +210,12 @@ export default function ApplicationWorkflow() {
       setUserId(params.get("userId"));
     }
   }, []);
+
+  useEffect(() => {
+    if (!userId) {
+      window.location.href = 'https://client.sirz.co.uk/'
+    }
+  }, [userId])
 
   // Log progress status changes
   useEffect(() => {
