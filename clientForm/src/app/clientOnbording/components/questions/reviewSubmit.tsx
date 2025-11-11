@@ -52,7 +52,7 @@ export function PreviewSubmit({ allSectionData, completionStatus, sectionConfigs
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500))
     try {
-      const response = await axios.put(`${BASE_URL}/api/onboarding/user/onboarding-status`, {
+      const response = await axios.put(`${BASE_URL}/api/onboardingProfiles/user/onboarding-status`, {
         userId,
         onboardingStatus: "completed"
       });

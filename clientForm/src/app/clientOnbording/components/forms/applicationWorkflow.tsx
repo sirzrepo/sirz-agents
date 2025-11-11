@@ -228,9 +228,22 @@ export default function ApplicationWorkflow() {
     }
   }, [progressStatus, selectedSection])
 
+
+  const updateUserOnboardingStatus = async () => { 
+    try {
+      const response = await axios.put(`${BASE_URL}/api/onboardingProfiles/user/onboarding-status`, {
+        userId,
+        onboardingStatus: "in_progress"
+      });
+      console.log("✅ User onboarding status updated:", response.data);
+    } catch (error) {
+      console.log("❌ User onboarding status update failed:", error);
+    }
+  };
+
   const initializeApplicationForm = async () => {
     try {
-      const response = await axios.post(`${BASE_URL}/api/onboarding`, {
+      const response = await axios.post(`${BASE_URL}/api/onboardingProfiles`, {
         userId,
         applicationFormData: [],
         completionStatus: {},
@@ -238,6 +251,7 @@ export default function ApplicationWorkflow() {
         isComplete: false
       });
 
+      updateUserOnboardingStatus()
       console.log("✅ Application form initialized:", response.data);
       return response.data;
     } catch (error) {
@@ -254,7 +268,7 @@ export default function ApplicationWorkflow() {
 
     const fetchForm = async () => {
       try {
-        const res = await axios.get(`${BASE_URL}/api/onboarding/user/${userId}`);
+        const res = await axios.get(`${BASE_URL}/api/onboardingProfiles/user/${userId}`);
         if (res.data.success && res.data.data) {
           const form = res.data.data;
 
@@ -307,7 +321,7 @@ export default function ApplicationWorkflow() {
     if (!userId || !isLoaded) return;
     const updateSelectedSection = async () => {
       try {
-        await axios.put(`${BASE_URL}/api/onboarding/${userId}/selected-section`, {
+        await axios.put(`${BASE_URL}/api/onboardingProfiles/${userId}/selected-section`, {
           sectionName: selectedSection,
         });
         console.log(`📌 Selected section updated: ${selectedSection}`);
@@ -366,7 +380,7 @@ export default function ApplicationWorkflow() {
       try {
         // First update the specific section
         await axios.put(
-          `${BASE_URL}/api/onboarding/${userId}/section/${sectionId}`, 
+          `${BASE_URL}/api/onboardingProfiles/${userId}/section/${sectionId}`, 
           {
             progress: answeredCount,
             // isComplete: completionStatus[sectionId],
@@ -435,7 +449,7 @@ export default function ApplicationWorkflow() {
       };
       // Update the section with all necessary data
       const response = await axios.put(
-        `${BASE_URL}/api/onboarding/${userId}/section/${sectionId}`,
+        `${BASE_URL}/api/onboardingProfiles/${userId}/section/${sectionId}`,
         payload
       );
       
@@ -444,7 +458,7 @@ export default function ApplicationWorkflow() {
       
       // Update the selected section
       await axios.put(
-        `${BASE_URL}/api/onboarding/${userId}/selected-section`,
+        `${BASE_URL}/api/onboardingProfiles/${userId}/selected-section`,
         { 
           sectionName: sectionId,
         }
