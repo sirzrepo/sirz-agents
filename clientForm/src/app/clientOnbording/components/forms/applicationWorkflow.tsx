@@ -230,6 +230,7 @@ export default function ApplicationWorkflow() {
 
 
   const updateUserOnboardingStatus = async () => { 
+    console.log("Updating user onboarding status...>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
     try {
       const response = await axios.put(`${BASE_URL}/api/onboardingProfiles/user/onboarding-status`, {
         userId,
@@ -452,6 +453,8 @@ export default function ApplicationWorkflow() {
         `${BASE_URL}/api/onboardingProfiles/${userId}/section/${sectionId}`,
         payload
       );
+
+      updateUserOnboardingStatus()
       
       console.log(`✅ Section "${sectionId}" updated:`, response.data);
       // setShowSidebarOnMobile(true)
