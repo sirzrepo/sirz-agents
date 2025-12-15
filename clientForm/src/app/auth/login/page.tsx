@@ -47,7 +47,7 @@ const Login = () => {
         <form onSubmit={handleSubmit} className="py-12 px-12 mt-10 border-b-[6px] border-e-[7px] border-colorGreen rounded-xl bg-white dark:bg-colorDefaultDark">
           <section className="">
             <div className="flex justify-center items-center mb-10">
-              <Image src={"/logo.svg"} alt="Logo" />
+              <Image src={"/logo.svg"} alt="Logo" width={100} height={100} />
             </div>
 
             <div className="text-center mb-7">
