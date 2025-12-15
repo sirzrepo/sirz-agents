@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { ReduxProvider } from "@/providers/ReduxProvider";
+import { AuthProvider } from "@/context/AuthContext";
 
 // We'll use the built-in Convex authentication system instead of a custom implementation
 
@@ -56,7 +57,9 @@ export default function RootLayout({
         >
           <ReduxProvider>
               <LayoutContent>
+                <AuthProvider>
                 {children}
+                </AuthProvider>
               </LayoutContent>
               <ToastContainer />
           </ReduxProvider>

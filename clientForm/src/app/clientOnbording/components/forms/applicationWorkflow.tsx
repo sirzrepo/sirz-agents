@@ -3,7 +3,6 @@
 import type React from "react"
 
 import { useState, useCallback, useEffect } from "react"
-import { useLocation } from 'react-router-dom';
 import { IdentityAndBackground } from "../questions/sectionOne/identityBackground"
 // Removed dummy data import - using local storage instead
 import { PreviewSubmit } from "../questions/reviewSubmit"
@@ -209,11 +208,13 @@ export default function ApplicationWorkflow() {
       const params = new URLSearchParams(window.location.search);
       const urlUserId = params.get("userId");
       setUserId(urlUserId);
+      console.log("userId*******************", urlUserId)
       
       // Only redirect if there's no userId in the URL after checking
       if (!urlUserId) {
         console.log('No userId found in URL, redirecting...');
-        window.location.href = "https://client.sirz.co.uk/";
+        // window.location.href = "https://client.sirz.co.uk/";
+        router.push("/auth/login")
       }
     }
   }, []);
