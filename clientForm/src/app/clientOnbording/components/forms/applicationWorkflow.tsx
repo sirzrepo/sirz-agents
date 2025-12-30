@@ -214,7 +214,7 @@ export default function ApplicationWorkflow() {
       if (!urlUserId) {
         console.log('No userId found in URL, redirecting...');
         // window.location.href = "https://client.sirz.co.uk/";
-        // router.push("/auth/login")
+        router.push("/auth/login")
       }
     }
   }, []);
