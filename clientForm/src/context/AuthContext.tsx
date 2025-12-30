@@ -99,6 +99,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       // const decodedToken: any = jwtDecode(token);
       // const id = decodedToken.userId;
       const { userId } = jwtDecode<{ userId: string }>(token);
+      localStorage.setItem('userId', userId);
   
       // Fetch user data which includes onboardingStatus
       const userData: IUser | null = await fetchUser(userId);
@@ -110,8 +111,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           setIsAuthenticated(false);
           setUser(null);
           setUserId(null);
-          window.location.assign(`https://onboarding.sirz.co.uk?userId=${userId}`);
-          // router.push(`/?userId=${userId}`);
+          // window.location.assign(`https://onboarding.sirz.co.uk?userId=${userId}`);
+          router.push(`/?userId=${userId}`);
         }, 500);
         return;
       }

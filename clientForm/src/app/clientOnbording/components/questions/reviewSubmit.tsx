@@ -58,8 +58,10 @@ export function PreviewSubmit({ allSectionData, completionStatus, sectionConfigs
       });
       setSubmitSuccess(true)
       console.log("✅ Application form submitted:", response.data);
+      localStorage.setItem("onboarding-showDashboard", "true")
       setTimeout(() => {
-        window.location.href = "https://client.sirz.co.uk/";
+        // window.location.href = "https://client.sirz.co.uk/";
+        window.location.href = "https://onboarding-pwqw.vercel.app/"
       }, 2000);
     } catch (error) {
       setIsSubmitting(false)
@@ -67,22 +69,7 @@ export function PreviewSubmit({ allSectionData, completionStatus, sectionConfigs
     }
     // onSubmit()
   }
-
-  if (submitSuccess) {
-    return (
-      <div className="space-y-6">
-        <div className="bg-green-50 border-2 border-green-200 rounded-lg p-8 text-center">
-          <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-green-900 mb-2">Application Submitted Successfully!</h2>
-          <p className="text-green-700 mb-4">
-            Thank you for completing your application. We will review your information and contact you shortly.
-          </p>
-          <p className="text-sm text-green-600">Application Reference: #APP-2025-001</p>
-        </div>
-      </div>
-    )
-  }
-
+      
   return (
     <div className="space-y-6">
       {/* Completion Status */}

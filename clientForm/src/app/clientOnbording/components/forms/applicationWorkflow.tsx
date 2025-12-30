@@ -205,8 +205,8 @@ export default function ApplicationWorkflow() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const params = new URLSearchParams(window.location.search);
-      const urlUserId = params.get("userId");
+      // const params = new URLSearchParams(window.location.search);
+      const urlUserId = localStorage.getItem("userId");
       setUserId(urlUserId);
       console.log("userId*******************", urlUserId)
       
@@ -214,7 +214,7 @@ export default function ApplicationWorkflow() {
       if (!urlUserId) {
         console.log('No userId found in URL, redirecting...');
         // window.location.href = "https://client.sirz.co.uk/";
-        router.push("/auth/login")
+        // router.push("/auth/login")
       }
     }
   }, []);
